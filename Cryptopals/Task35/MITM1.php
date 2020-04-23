@@ -5,9 +5,18 @@ namespace Cryptopals\Task35;
 use AES\Key;
 use Cryptopals\Task34\PKC7;
 
+/**
+ * Class MITM1
+ * g = 1
+ * @package Cryptopals\Task35
+ */
 class MITM1 extends MITM
 {
-    function sniffData(string $data): string
+  /**
+   * @param string $data
+   * @return string
+   */
+  function sniffData(string $data): string
     {
         $obj = json_decode($data);
 

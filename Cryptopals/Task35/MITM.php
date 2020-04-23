@@ -5,11 +5,21 @@ namespace Cryptopals\Task35;
 use AES\CBC;
 use Cryptopals\Task34\PKC7;
 
+/**
+ * Class MITM
+ * @package Cryptopals\Task35
+ */
 class MITM
 {
     protected $cbc;
 
-    function __construct(CBC $cbc, ConversationEntity $A, ConversationEntity $B)
+  /**
+   * MITM constructor.
+   * @param CBC $cbc
+   * @param ConversationEntity $A
+   * @param ConversationEntity $B
+   */
+  function __construct(CBC $cbc, ConversationEntity $A, ConversationEntity $B)
     {
         $this->cbc = $cbc;
 
@@ -22,7 +32,11 @@ class MITM
         };
     }
 
-    function sniffData(string $data): string
+  /**
+   * @param string $data
+   * @return string
+   */
+  function sniffData(string $data): string
     {
         return $data;
     }

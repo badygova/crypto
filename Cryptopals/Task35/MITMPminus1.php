@@ -5,11 +5,21 @@ namespace Cryptopals\Task35;
 use AES\Key;
 use Cryptopals\Task34\PKC7;
 
+/**
+ * Class MITMPminus1
+ * g = p-1
+ * @package Cryptopals\Task35
+ */
 class MITMPminus1 extends MITM
 {
-    private $Pminus1;
 
-    function sniffData(string $data): string
+  private $Pminus1;
+
+  /**
+   * @param string $data
+   * @return string
+   */
+  function sniffData(string $data): string
     {
         $obj = json_decode($data);
 

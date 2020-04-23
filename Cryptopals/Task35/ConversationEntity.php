@@ -7,6 +7,10 @@ use AES\Key;
 use Cryptopals\Task34\PKC7;
 use Cryptopals\Task33\DH;
 
+/**
+ * Class ConversationEntity
+ * @package Cryptopals\Task35
+ */
 class ConversationEntity
 {
     private $name;
@@ -21,7 +25,12 @@ class ConversationEntity
     protected $cbc;
     protected $pkcs7;
 
-    function __construct(string $name, DH $dh)
+  /**
+   * ConversationEntity constructor.
+   * @param string $name
+   * @param DH $dh
+   */
+  function __construct(string $name, DH $dh)
     {
         $this->name = $name;
         $this->dh = $dh;
@@ -32,7 +41,10 @@ class ConversationEntity
         $this->priv = $this->dh->generatePrivate();
     }
 
-    function groupNeg()
+  /**
+   *
+   */
+  function groupNeg()
     {
         print "{$this->name}: p/g neg\n";
 
@@ -45,7 +57,10 @@ class ConversationEntity
         $func(json_encode($obj));
     }
 
-    function groupAck()
+  /**
+   *
+   */
+  function groupAck()
     {
         print "{$this->name}: p/g ack\n";
 
@@ -58,7 +73,10 @@ class ConversationEntity
         $func(json_encode($obj));
     }
 
-    function sendPub()
+  /**
+   *
+   */
+  function sendPub()
     {
         print "{$this->name}: send pub\n";
 
@@ -72,7 +90,11 @@ class ConversationEntity
         $func(json_encode($obj));
     }
 
-    function send(string $data)
+  /**
+   * @param string $data
+   * @throws \Exception
+   */
+  function send(string $data)
     {
         $obj = new \stdClass();
         $obj->msg = 'dat';
@@ -95,7 +117,10 @@ class ConversationEntity
         $func($data);
     }
 
-    function receive(string $data)
+  /**
+   * @param string $data
+   */
+  function receive(string $data)
     {
         $dataLen = strlen($data);
         print "{$this->name}: received $dataLen bytes\n";

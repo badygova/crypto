@@ -2,12 +2,19 @@
 
 namespace Cryptopals\Task33;
 
+/**
+ * Class DH
+ * @package Cryptopals\Task33
+ */
 class DH
 {
     private $p;
     private $g;
 
-    function __construct()
+  /**
+   * DH constructor.
+   */
+  function __construct()
     {
         $this->p = gmp_init('ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e08
         8a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c2
@@ -17,27 +24,46 @@ class DH
         $this->g = gmp_init(2);
     }
 
-    function generatePrivate(): \GMP
+  /**
+   * @return \GMP
+   */
+  function generatePrivate(): \GMP
     {
         return gmp_random(60);
     }
 
-    function generatePublic(\GMP $private): \GMP
+  /**
+   * @param \GMP $private
+   * @return \GMP
+   */
+  function generatePublic(\GMP $private): \GMP
     {
         return gmp_powm($this->g, $private, $this->p);
     }
 
-    function generateShared(\GMP $private, \GMP $public): \GMP
+  /**
+   * @param \GMP $private
+   * @param \GMP $public
+   * @return \GMP
+   */
+  function generateShared(\GMP $private, \GMP $public): \GMP
     {
         return gmp_powm($public, $private, $this->p);
     }
 
-    function p(): string
+  /**
+   * @return string
+   */
+  function p(): string
     {
         return gmp_strval($this->p, 16);
     }
 
-    function g(string $val = null): string
+  /**
+   * @param string|null $val
+   * @return string
+   */
+  function g(string $val = null): string
     {
         if (is_string($val)) {
             $this->g = gmp_init($val, 16);

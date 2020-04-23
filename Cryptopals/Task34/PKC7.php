@@ -2,14 +2,27 @@
 
 namespace Cryptopals\Task34;
 
+/**
+ * Class PKC7
+ * @package Cryptopals\Task34
+ */
 class PKC7
 {
-    static function depad(string $message): string
+  /**
+   * @param string $message
+   * @return string
+   */
+  static function depad(string $message): string
     {
         return substr($message, 0, -static::getPaddingLength($message));
     }
 
-    static function getPaddingLength(string $message, int $requiredLen = 16): int
+  /**
+   * @param string $message
+   * @param int $requiredLen
+   * @return int
+   */
+  static function getPaddingLength(string $message, int $requiredLen = 16): int
     {
         $messageLen = strlen($message);
         if (!$messageLen || $messageLen % $requiredLen) {

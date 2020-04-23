@@ -6,6 +6,10 @@ use AES\CBC;
 use AES\Key;
 use Cryptopals\Task33\DH;
 
+/**
+ * Class MITM
+ * @package Cryptopals\Task34
+ */
 class MITM
 {
     protected $dh;
@@ -15,13 +19,22 @@ class MITM
     protected $stolenP = null;
     protected $evilShared = null;
 
-    function __construct(DH $dh, CBC $cbc)
+  /**
+   * MITM constructor.
+   * @param DH $dh
+   * @param CBC $cbc
+   */
+  function __construct(DH $dh, CBC $cbc)
     {
         $this->cbc = $cbc;
         $this->dh = $dh;
     }
 
-    function sniffA(string $data, ConversationEntity $B)
+  /**
+   * @param string $data
+   * @param ConversationEntity $B
+   */
+  function sniffA(string $data, ConversationEntity $B)
     {
         if ($this->state === 0) {
             print "M: Manipulating kex req\n";
@@ -46,7 +59,11 @@ class MITM
         }
     }
 
-    function sniffB(string $data, ConversationEntity $A)
+  /**
+   * @param string $data
+   * @param ConversationEntity $A
+   */
+  function sniffB(string $data, ConversationEntity $A)
     {
         if ($this->state === 1) {
             print "M: Manipulating kex resp\n";

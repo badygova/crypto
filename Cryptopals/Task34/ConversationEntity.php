@@ -6,6 +6,10 @@ use AES\CBC;
 use AES\Key;
 use Cryptopals\Task33\DH;
 
+/**
+ * Class ConversationEntity
+ * @package Cryptopals\Task34
+ */
 class ConversationEntity
 {
     private $name;
@@ -20,7 +24,13 @@ class ConversationEntity
     protected $cbc;
     protected $pkcs7;
 
-    function __construct(string $name, DH $dh, CBC $cbc)
+  /**
+   * ConversationEntity constructor.
+   * @param string $name
+   * @param DH $dh
+   * @param CBC $cbc
+   */
+  function __construct(string $name, DH $dh, CBC $cbc)
     {
         $this->name = $name;
         $this->dh = $dh;
@@ -30,7 +40,10 @@ class ConversationEntity
         $this->pub = $dh->generatePublic($this->priv);
     }
 
-    function kexRequest()
+  /**
+   *
+   */
+  function kexRequest()
     {
         print "{$this->name}: kex req\n";
 
@@ -43,7 +56,10 @@ class ConversationEntity
         $func(json_encode($obj));
     }
 
-    function kexResponse(string $data)
+  /**
+   * @param string $data
+   */
+  function kexResponse(string $data)
     {
         $obj = json_decode($data);
 
@@ -63,7 +79,11 @@ class ConversationEntity
         }
     }
 
-    function send(string $data)
+  /**
+   * @param string $data
+   * @throws \Exception
+   */
+  function send(string $data)
     {
         $key = new Key(substr(sha1($this->shared, true), 0, 16));
         $iv = random_bytes(16);
@@ -76,7 +96,10 @@ class ConversationEntity
         $func($message);
     }
 
-    function receive(string $data)
+  /**
+   * @param string $data
+   */
+  function receive(string $data)
     {
         if (!$this->shared) {
             $this->kexResponse($data);
