@@ -4,9 +4,8 @@ namespace Cryptopals\Task34;
 
 use AES\CBC;
 use Cryptopals\Task33\DH;
-use Cryptopals\Solution;
 
-class Main implements Solution
+class Main
 {
     protected $dh;
     protected $cbc;

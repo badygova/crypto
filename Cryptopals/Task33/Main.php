@@ -2,9 +2,8 @@
 
 namespace Cryptopals\Task33;
 
-use Cryptopals\Solution;
 
-class Main implements Solution
+class Main
 {
     protected $dh;
 

@@ -30,9 +30,9 @@ namespace Cryptopals\Set5\Challenge35;
 
 use AES\CBC;
 use Cryptopals\Task33\DH;
-use Cryptopals\Solution;
 
-class Main implements Solution
+
+class Main
 {
     protected $cbc;
 

@@ -2,13 +2,11 @@
 
 namespace Cryptopals\Task39;
 
-use Cryptopals\Solution;
-
 /**
  * Class Main
  * @package Cryptopals\Task39
  */
-class Main implements Solution
+class Main
 {
   /**
    * @return bool
