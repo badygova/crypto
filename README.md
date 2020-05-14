@@ -5,3 +5,6 @@ Task35 - Implement DH with negotiated groups, and break with malicious "g" param
 Task39 - Implement RSA  
 Task40 - Implement an E=3 RSA Broadcast attack  
 Task41 - Implement unpadded message recovery oracle
+
+Task42 - Bleichenbacher's RSA Attack  
+Task46 - RSA parity oracle
